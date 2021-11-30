@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "model-hub"
+version = "0.1.0"
+description = ""
+authors = [" ludwig model hub development team "]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+motor = "^2.3.0"
+fastapi = "^0.61.1"
+uvicorn = "^0.12.1"
+python-dotenv = "^0.14.0"
+tavern = "^1.7.0"
+pytest = "^6.1.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
