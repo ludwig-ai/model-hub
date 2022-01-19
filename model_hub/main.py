@@ -7,7 +7,7 @@ from model_hub.model import models
 
 model_hub = FastAPI(title="Async FastAPI For ModelHub")
 
-model_hub.include_router(models.router, prefix='/api/models')
+model_hub.include_router(models.router, prefix="/api/models")
 
 
 @model_hub.on_event("startup")
