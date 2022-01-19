@@ -1,9 +1,10 @@
 from abc import abstractmethod
 from typing import List
+
 from model_hub.db.models import Model
 
 
-class DatabaseManager(object):
+class DatabaseManager:
     @property
     def client(self):
         raise NotImplementedError
