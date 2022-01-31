@@ -26,8 +26,9 @@ class MongoManager(DatabaseManager):
     async def get_models(self) -> List[Model]:
         models_list = []
         models_q = self.db.models.find()
-        async for post in models_q:
-            models_list.append(Model(**post, id=post["model_url"]))
+        print('models_q='+str(models_q))
+        async for model in models_q:
+            models_list.append(Model(**model, id=model["_id"]))
         return models_list
 
     async def get_model(self, model_url: str) -> Model:
