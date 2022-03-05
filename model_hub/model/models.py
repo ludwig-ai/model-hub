@@ -13,9 +13,8 @@ async def all_models(db: DatabaseManager = Depends(get_database)):
     return models
 
 
-@router.get("/{model_url}")
-async def one_model(model_url: str,
-                    db: DatabaseManager = Depends(get_database)):
+@router.get("/one/model")
+async def one_model(model_url: str, db: DatabaseManager = Depends(get_database)):
     model = await db.get_model(model_url=model_url)
     return model
 
