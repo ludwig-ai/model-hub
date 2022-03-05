@@ -36,4 +36,5 @@ Sample url is an http POST action with the following url: http://localhost:8000/
 - Make the get based on model_url have a better url structure
 - unit tests
 - end to end integration tests
+- code cleanup for cleaner mongo install
 - local testing by ludwig committers--bug fixes due to this
