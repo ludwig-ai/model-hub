@@ -65,7 +65,6 @@ class Model(BaseModel):
             "example": {
                 "name": "Bertv3",
                 "model_url": "/model/path/is/here",
-                "name": "nlp",
                 "description": "great nlp model",
                 "version": "1.0",
                 "ludwig_version": "1.0",
