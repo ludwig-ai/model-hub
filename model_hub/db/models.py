@@ -1,6 +1,6 @@
 from bson import ObjectId
-from pydantic.main import BaseModel
 from pydantic import Field
+from pydantic.main import BaseModel
 
 
 class OID(str):
