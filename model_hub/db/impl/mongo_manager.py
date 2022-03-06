@@ -32,8 +32,8 @@ class MongoManager(DatabaseManager):
         return models_list
 
     async def get_model(self, model_url: str) -> Model:
-        if (model_q := await self.db.models\
-                .find_one({"model_url": model_url})) is not None:
+        if (model_q := await self.db.models.\
+                find_one({"model_url": model_url})) is not None:
             return Model(**model_q, id=model_q["_id"])
         else:
             raise HTTPException\

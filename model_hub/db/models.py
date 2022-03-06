@@ -1,5 +1,3 @@
-from typing import Optional
-
 from bson import ObjectId
 from pydantic.main import BaseModel
 from pydantic import Field
@@ -29,6 +27,7 @@ class BaseDBModel(BaseModel):
             """Camel case generator."""
             temp = string.split("_")
             return temp[0] + "".join(ele.title() for ele in temp[1:])
+
 
 class PyObjectId(ObjectId):
     @classmethod
