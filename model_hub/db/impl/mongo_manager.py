@@ -2,11 +2,11 @@ import logging
 from typing import List
 
 from bson import ObjectId
+from fastapi import HTTPException
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase
 
 from model_hub.db.database_manager import DatabaseManager
 from model_hub.db.models import Model
-from fastapi import HTTPException
 
 
 class MongoManager(DatabaseManager):
