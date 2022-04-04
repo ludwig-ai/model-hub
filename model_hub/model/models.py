@@ -19,6 +19,7 @@ async def one_model(model_url: str,
     model = await db.get_model(model_url=model_url)
     return model
 
+
 @router.put("/{model_url}")
 async def update_model(model_url: str,
                        model: Model,
@@ -26,11 +27,13 @@ async def update_model(model_url: str,
     post = await db.update_model(model=model, model_url=model_url)
     return post
 
+
 @router.post("/", status_code=201)
 async def add_model(post_response: Model,
                     db: DatabaseManager = Depends(get_database)):
     post = await db.add_model(post_response)
     return post
+
 
 @router.delete("/{model_url}")
 async def delete_model(model_url: str,
