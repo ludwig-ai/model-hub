@@ -1,8 +1,8 @@
-from typing import Optional
+from typing import List
 
 from bson import ObjectId
-from pydantic.main import BaseModel
 from pydantic import Field
+from pydantic.main import BaseModel
 
 
 class OID(str):
@@ -30,6 +30,7 @@ class BaseDBModel(BaseModel):
             temp = string.split("_")
             return temp[0] + "".join(ele.title() for ele in temp[1:])
 
+
 class PyObjectId(ObjectId):
     @classmethod
     def __get_validators__(cls):
@@ -46,11 +47,30 @@ class PyObjectId(ObjectId):
         field_schema.update(type="string")
 
 
+class FeatureTypeDefinition(BaseModel):
+    feature: str
+    feature_data_type: str
+
+
+class ExpectedInputStructure(BaseModel):
+    name: str
+    type: str
+    encoder: str
+
+
+class ExpectedOutputStructure(BaseModel):
+    name: str
+    type: str
+
+
 class Model(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
     name: str = Field(...)
     model_url: str = Field(...)
     name: str = Field(...)
+    expected_input_structure: List[ExpectedInputStructure]
+    expected_output_structure: List[ExpectedOutputStructure]
+    feature_type_definition: List[FeatureTypeDefinition]
     description: str = Field(...)
     version: str = Field(...)
     ludwig_version: str = Field(...)
@@ -64,12 +84,19 @@ class Model(BaseModel):
         schema_extra = {
             "example": {
                 "name": "Bertv3",
+                "expected_input_structure": [
+                    {"name": "text", "type": "text", "encoder": "bert"}
+                ],
+                "expected_output_structure": [{"name": "label",
+                                               "type": "category"}],
+                "feature_type_definition": [
+                    {"feature": "name", "feature_data_type": "text"}
+                ],
                 "model_url": "/model/path/is/here",
-                "name": "nlp",
                 "description": "great nlp model",
                 "version": "1.0",
                 "ludwig_version": "1.0",
                 "author": "ludwig_author",
-                "namespace": "model_namespace"
+                "namespace": "model_namespace",
             }
         }
