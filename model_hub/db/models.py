@@ -1,5 +1,4 @@
 from typing import List
-
 from bson import ObjectId
 from pydantic import Field
 from pydantic.main import BaseModel
@@ -21,7 +20,7 @@ class OID(str):
 
 class BaseDBModel(BaseModel):
     class Config:
-        orm_mode = True
+        orm_mode = True​
         allow_population_by_field_name = True
 
         @classmethod
@@ -38,14 +37,13 @@ class PyObjectId(ObjectId):
 
     @classmethod
     def validate(cls, v):
-        if not ObjectId.is_valid(v):
+        if not ObjectId.is_valid(v)
             raise ValueError("Invalid objectid")
         return ObjectId(v)
 
     @classmethod
-    def __modify_schema__(cls, field_schema):
+    def __modify_schema__(cls, field_schema):
         field_schema.update(type="string")
-
 
 class FeatureTypeDefinition(BaseModel):
     feature: str
