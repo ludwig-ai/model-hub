@@ -1,3 +1,5 @@
+from typing import List
+
 from bson import ObjectId
 from pydantic import Field
 from pydantic.main import BaseModel
@@ -45,11 +47,28 @@ class PyObjectId(ObjectId):
         field_schema.update(type="string")
 
 
+class FeatureTypeDefinition(BaseModel):
+    feature: str
+    feature_data_type: str
+
+
+class ExpectedInputStructure(BaseModel):
+    name: str
+    type: str
+    encoder: str
+
+
+class ExpectedOutputStructure(BaseModel):
+    name: str
+    type: str
+
+
 class Model(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
     name: str = Field(...)
     model_url: str = Field(...)
     name: str = Field(...)
+    feature_type_definition: List[FeatureTypeDefinition]
     description: str = Field(...)
     version: str = Field(...)
     ludwig_version: str = Field(...)
@@ -63,11 +82,14 @@ class Model(BaseModel):
         schema_extra = {
             "example": {
                 "name": "Bertv3",
+                "feature_type_definition": [
+                    {"feature": "name", "feature_data_type": "text"}
+                ],
                 "model_url": "/model/path/is/here",
                 "description": "great nlp model",
                 "version": "1.0",
                 "ludwig_version": "1.0",
                 "author": "ludwig_author",
-                "namespace": "model_namespace"
+                "namespace": "model_namespace",
             }
         }
