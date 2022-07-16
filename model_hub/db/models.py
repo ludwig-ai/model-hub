@@ -68,8 +68,6 @@ class Model(BaseModel):
     name: str = Field(...)
     model_url: str = Field(...)
     name: str = Field(...)
-    expected_input_structure: List[ExpectedInputStructure]
-    expected_output_structure: List[ExpectedOutputStructure]
     feature_type_definition: List[FeatureTypeDefinition]
     description: str = Field(...)
     version: str = Field(...)
@@ -84,11 +82,6 @@ class Model(BaseModel):
         schema_extra = {
             "example": {
                 "name": "Bertv3",
-                "expected_input_structure": [
-                    {"name": "text", "type": "text", "encoder": "bert"}
-                ],
-                "expected_output_structure": [{"name": "label",
-                                               "type": "category"}],
                 "feature_type_definition": [
                     {"feature": "name", "feature_data_type": "text"}
                 ],
