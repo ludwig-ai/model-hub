@@ -12,7 +12,7 @@ ci:
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.5.0
     hooks:
       - id: check-ast
       - id: check-byte-order-marker
@@ -28,26 +28,26 @@ repos:
       - id: trailing-whitespace
       - id: mixed-line-ending
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.2.2
+    rev: v3.15.0
     hooks:
       - id: pyupgrade
         args: [--py36-plus]
   - repo: https://github.com/PyCQA/docformatter
-    rev: v1.5.0
+    rev: v1.7.5
     hooks:
       - id: docformatter
         args: [--in-place, --wrap-summaries=115, --wrap-descriptions=120]
   - repo: https://github.com/PyCQA/isort
-    rev: 5.10.1
+    rev: 5.13.1
     hooks:
       - id: isort
         name: Format imports
   - repo: https://github.com/pycqa/flake8
-    rev: "6.0.0"
+    rev: "6.1.0"
     hooks:
       - id: flake8
   - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.16
+    rev: 0.7.17
     hooks:
       - id: mdformat
         additional_dependencies:
